@@ -82,7 +82,15 @@ spring:
               uri: lb://ordering
               predicates:
                 - Path=/api/v1/orders/**
-                - Method=GET,OPTIONS
+                - Method=GET,POST,PUT,DELETE,OPTIONS
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: ordering-route-cb
+                    statusCodes:
+                      - 502
+                      - 504
+                      - 500
 
             - id: user-management-route
               uri: lb://authorization-server
