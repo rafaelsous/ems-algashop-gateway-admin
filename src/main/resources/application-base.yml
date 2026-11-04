@@ -57,6 +57,18 @@ spring:
                 - Path=/api/v1/users/**
                 - Method=GET,POST,PUT,DELETE,OPTIONS
 
+            - id: emails-route
+              uri: lb://notifications
+              predicates:
+                - Path=/api/v1/emails/**
+                - Method=POST,OPTIONS
+
+            - id: email-templates-route
+              uri: lb://notifications
+              predicates:
+                - Path=/api/v1/email-templates/**
+                - Method=GET,POST,PUT,DELETE,OPTIONS
+
 management:
   info:
     env.enabled: true
