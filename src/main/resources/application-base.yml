@@ -72,7 +72,7 @@ spring:
             - id: orders-metrics-route
               uri: lb://ordering
               predicates:
-                - Path=/api/v1/metrics/sales-overview
+                - Path=/api/v1/metrics/sales-overview,/api/v1/metrics/total-overview
                 - Method=GET,OPTIONS
 
 management:
