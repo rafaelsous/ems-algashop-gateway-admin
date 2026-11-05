@@ -60,7 +60,7 @@ spring:
             - id: emails-route
               uri: lb://notifications
               predicates:
-                - Path=/api/v1/emails/**
+                - Path=/api/v1/emails
                 - Method=POST,OPTIONS
 
             - id: email-templates-route
@@ -68,6 +68,12 @@ spring:
               predicates:
                 - Path=/api/v1/email-templates/**
                 - Method=GET,POST,PUT,DELETE,OPTIONS
+
+            - id: orders-metrics-route
+              uri: lb://ordering
+              predicates:
+                - Path=/api/v1/metrics/sales-overview
+                - Method=GET,OPTIONS
 
 management:
   info:
