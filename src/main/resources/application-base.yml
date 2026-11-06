@@ -75,6 +75,12 @@ spring:
                 - Path=/api/v1/metrics/sales-overview,/api/v1/metrics/total-overview
                 - Method=GET,OPTIONS
 
+            - id: billing-metrics-route
+              uri: lb://billing
+              predicates:
+                - Path=/api/v1/metrics/payments-overview
+                - Method=GET,OPTIONS
+
 management:
   info:
     env.enabled: true
